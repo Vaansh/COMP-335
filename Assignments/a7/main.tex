@@ -1,0 +1,106 @@
+\documentclass{homework}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{graphicx}
+\newcommand{\hwname}{Vaansh Lakhwara}
+\newcommand{\hwemail}{ID: 401147641}
+\newcommand{\hwnum}{7}
+\newcommand{\hwtype}{Assignment}
+\newcommand{\hwclass}{COMP 335}
+\begin{document}
+\maketitle
+\question
+\textbf{(a)}
+\textbf{Given Grammar:}\\
+S $\rightarrow$ ABaB|Bab\\ 
+A $\rightarrow$ aA|bA|AC\\
+B $\rightarrow$ ba|aB|$\lambda$\\
+C $\rightarrow$ a|bC|$\lambda$\\
+\newline
+\textbf{Step 1:} Remove all $\lambda$ productions\\
+S $\rightarrow$ ABaB|ABa|AaB|Bab|Aa|ab\\ 
+A $\rightarrow$ aA|bA|AC|A\\
+B $\rightarrow$ ba|aB|a\\
+C $\rightarrow$ a|bC|b\\
+\newline
+\textbf{Step 2:} Remove all unit productions\\
+S $\rightarrow$ ABaB|ABa|AaB|Bab|Aa|ab\\ 
+A $\rightarrow$ aA|bA|AC|aA|bA|AC\\
+B $\rightarrow$ ba|aB|a\\
+C $\rightarrow$ a|bC|b\\
+\newline
+\textbf{Step 3:} Remove all useless productions\\
+S $\rightarrow$ ABaB|ABa|AaB|Bab|Aa|ab\\ 
+A $\rightarrow$ aA|bA|AC\\
+B $\rightarrow$ ba|aB|a\\
+C $\rightarrow$ a|bC|b\\
+\newline
+\textbf{Chomsky Normal Form:}\\
+S $\rightarrow$ $V_0V_1$|$V_0T_a$|$V_2$B|B$V_3$|A$T_a$|$T_aT_b$\\ 
+A $\rightarrow$ $T_a$A|$T_b$A|AC\\
+B $\rightarrow$ $T_bT_a$|$T_a$B|$T_a$\\
+C $\rightarrow$ $T_a$|$T_b$C|$T_b$\\
+$V_0$ $\rightarrow$ AB\\
+$V_1$ $\rightarrow$ $T_a$B\\
+$V_2$ $\rightarrow$ A$T_a$\\
+$V_3$ $\rightarrow$ $T_aT_b$\\
+$T_a$ $\rightarrow$ a\\
+$T_b$ $\rightarrow$ b\\
+\newline
+\textbf{(b)}
+\textbf{Given Grammar:}\\
+S $\rightarrow$ 1P0Q\\ 
+P $\rightarrow$ RQ|01|001\\
+R $\rightarrow$ 0R|$\lambda$\\
+Q $\rightarrow$ 1Q|$\lambda$\\
+\newline
+\textbf{Step 1:} Remove all $\lambda$ productions\\
+S $\rightarrow$ 1P0Q\\ 
+P $\rightarrow$ RQ|R|Q|01|001\\
+R $\rightarrow$ 0R|0\\
+Q $\rightarrow$ 1Q|1\\
+\newline
+\textbf{Step 2:} Remove all unit productions\\
+S $\rightarrow$ 1P0Q\\ 
+P $\rightarrow$ RQ|0R|0|1Q|1|01|001\\
+R $\rightarrow$ 0R|0\\
+Q $\rightarrow$ 1Q|1\\
+\newline
+\textbf{Step 3:} Remove all useless productions\\
+No useless productions\\
+\newline
+\textbf{Chomsky Normal Form:}\\
+S $\rightarrow$ $V_0$Q\\ 
+P $\rightarrow$ RQ|$T_0$R|$T_1$Q|$T_0V_2$|$V_2$|$T_1$|$T_0$\\
+R $\rightarrow$ $T_0$R|$T_0$\\
+Q $\rightarrow$ $T_1$Q|$T_1$\\
+$V_0$ $\rightarrow$ $T_1$P\\
+$V_1$ $\rightarrow$ $T_0$Q\\
+$V_2$ $\rightarrow$ $T_0T_1$\\
+$T_0$ $\rightarrow$ 0\\
+$T_1$ $\rightarrow$ 1\\
+\question
+Let grammar G be a grammar that does not have useless productions, such that when the procedure to remove unit productions is applied to G, we get a grammar G' that has useless productions.\\
+\newline
+\textbf{Grammar G:}\\
+S $\rightarrow$ $T_0V_0$|$T_1V_1$|$V_2$\\
+$V_0$ $\rightarrow$ $T_0$S|$T_0T_0$\\
+$V_1$ $\rightarrow$ $V_0$|$T_1$\\
+$V_2$ $\rightarrow$ $T_0T_1$\\
+$T_0$ $\rightarrow$ 0\\
+$T_1$ $\rightarrow$ 1\\
+\newline
+Removing unit productions we get:\\
+\textbf{Grammar G':}\\
+S $\rightarrow$ $T_0V_0$|$T_1V_1$|$T_0T_0$\\
+$V_0$ $\rightarrow$ $T_0$S|$T_0T_0$\\
+$V_1$ $\rightarrow$ $T_0$S|$T_0T_0$|$T_1$\\
+$V_2$ $\rightarrow$ $T_0T_1$\\
+$T_0$ $\rightarrow$ 0\\
+$T_1$ $\rightarrow$ 1\\
+
+Here (in G'), $V_2$ is a useless production.
+\newline
+\end{document}

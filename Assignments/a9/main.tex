@@ -1,0 +1,62 @@
+\documentclass{homework}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{graphicx}
+
+% CHANGE THE FOLLOW THREE LINES!
+\newcommand{\hwname}{Vaansh Lakhwara}
+\newcommand{\hwemail}{ID: 401147641}
+\newcommand{\hwnum}{9}
+
+% CHANGE THESE ONLY ONCE PER CLASS
+\newcommand{\hwtype}{Assignment}
+\newcommand{\hwclass}{COMP 335}
+
+\begin{document}
+\maketitle
+\question
+\textbf{(a)}\\
+\textbf{(b)}\\
+\textbf{(c)}
+Let m be the integer given by the pumping and choose $w=a^{m^3+5}$ \\
+Since $w \in L_1$ we can write $w = xyz$ such that $|xy| \leq m$ and $|y| \geq 1$, as well as $xy^iz \in L_1$ for all $i=$0,1,2,...\\
+Let $|y|=k$, so $k \leq m$ and $xy^2z \in L_1$ where $xy^2z=a^{m^3+5+k}$ 
+
+We know that, $m^3+5<m^3+5+k$ (Since $k \geq 1$)\\
+$m<3m<3m^2+3m+1$\\
+$m^3+k<m^3+m<m^3+3m^2+3m+1<(m+1)^3$ (Since $|xy| \leq m \Rightarrow |y| \leq m $)\\
+$m^3+5<m^3+5+k<{m+1}^3+5$\\
+$\therefore, a^{m^3+5}<a^{m^3+5+k}<a^{{m+1}^3+5}$\\
+and, $a^{m^3+5+k} \not\in L_1$
+
+Therefore, the pumped string is of length that is strictly in between the two powers and cannot be in $L_1$. \\
+\textbf{Contradiction.}
+\textbf{(c)}
+\question
+$L_2=\{vuv^R : v,u \in \{a,b\}^*, |u|=2\}$\\
+Assume for contradiction that $L_2$ is regular and apply the Pumping Lemma. \\
+Let m be the integer given by the pumping and choose $w=a^mb^mabb^ma^m$, where $v=a^mb^m, u=ab$ and $ v^R=a^mb^m$ \\
+Since $w \in L_2$ we can write $w = xyz$ such that $|xy| \leq m$ and $|y| \geq 1$, as well as $xy^iz \in L_2$ for all $i=$0,1,2,...\\
+Let $|y|=k$, then $xy^2z \in L_2$ where $xy^2z=a^{m+k}b^mabb^ma^m$ 
+
+Here, $u=ab, v=a^{m+k}n^m$ and $v^R=b^ma^m$, however $v^R$ is not the reverse of $v$, since $k \geq 1$\\
+$\therefore, a^{m+k}b^mabb^ma^m \not\in L_2$
+
+Therefore, the pumped string produces a string that is not of the form $vuv^R$ and cannot be in $L_2$. \\
+\textbf{Contradiction.}
+\question
+$L_3=\{a^ib^jc^k : i \geq 2j+3k\}$\\
+Assume for contradiction that $L_3$ is regular and apply the Pumping Lemma. \\
+Let m be the integer given by the pumping and choose $w=a^{5m}b^mc^m$ \\
+Since $w \in L_3$ we can write $w = xyz$ such that $|xy| \leq m$ and $|y| \geq 1$, as well as $xy^iz \in L_3$ for all $i=$0,1,2,...\\
+Let $|y|=k$.\\
+Pumping down, we get $a^{5m-k}b^mc^m$\\
+Since $5m-k<5m \Rightarrow$ the string is not of the form $a^ib^jc^k : i \geq 2j+3k$\\ 
+$\therefore, a^{5m-k}b^mc^m \not \in L_3$
+
+Therefore, the pumped down string cannot be in $L_3$. \\
+\textbf{Contradiction.}
+
+\end{document}
